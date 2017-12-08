@@ -1,0 +1,46 @@
+
+
+<!-- =========================
+    REGISTER VIEW
+============================== -->
+<section id="login" class="parallax-section" name="reg_form">
+	<div class="container">
+
+		<div class="row">
+		    <div class="highlight wow fadeInLeft col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1s">
+				<ul class="home-icon">
+				    <li><a routerLink="/register" class="fa fa-user-plus fa-2x fadeInUp" data-wow-delay="1s"></a></li>
+			    </ul>
+				<span class="external-link"><h3>Create Account </h3><a class="link" routerLink="/register" routerLinkActive="active"><sup class="fa fa-external-link"></sup></a></span>
+				<p> This app allows remote users to look up debt status. Create your account now and be able to check the debt status of your creditors.</p>
+				<p> Already have an account? <a class="link"  routerLink="/login" routerLinkActive="active">Login <sup class="fa fa-external-link"></sup></a>.</p>
+		    </div>
+
+			<form action="#" method="post">
+    		    <div class=" register-icon highlight wow fadeInUp col-md-offset-1 col-md-6 col-sm-8" data-wow-delay="1.5s">
+    				<ul class="home-icon">
+    				    <li><a routerLink="/register" class="fa fa-registered fa-2x fadeInUp" data-wow-delay="1s"></a></li>
+    			    </ul>
+    			</div>
+
+    		    <div class="highlight wow fadeInRight col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1.5s">
+    		        <div *ngIf="reg_error" class="form-errors"> {{ error_object.username}} </div>
+					<input name="username" [(ngModel)]="form.username" type="text" class="form-control" id="username" placeholder="Username">
+    		        <div *ngIf="reg_error" class="form-errors"> {{ error_object.email}} </div>
+					<input name="email" [(ngModel)]="form.email" type="email" class="form-control" id="email" placeholder="john@example.com">
+    		        <div *ngIf="reg_error" class="form-errors"> {{ error_object.phone}} </div>
+					<input name="phone" [(ngModel)]="form.phone" type="telephone" class="form-control" id="phone" placeholder="+254 7** *** ***">
+    			</div>
+
+    		    <div class="highlight wow fadeInRight col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1s">
+    		        <div *ngIf="reg_error" class="form-errors"> {{ pass_error}} {{ error_object.password}} </div>
+					<input name="password1" [(ngModel)]="form.password1" type="password" class="form-control" id="password1" placeholder="**********">
+					<input name="password2" [(ngModel)]="form.password2" type="password" class="form-control" id="password2" placeholder="Confirm Password">
+    				<div class="col-md-offset-3 col-md-9 col-sm-offset-1 col-sm-10">
+    					<button class="col-sm-12" (click)="register(form);"> REGISTER <i [ngClass]="{'fa-spinner fa-spin': submitting, 'fa-long-arrow-right': !submitting}" class="fa" ></i></button>
+    				</div>
+    		    </div>
+    		</form>
+		</div>
+	</div>
+</section>

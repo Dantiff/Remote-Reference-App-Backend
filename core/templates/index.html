@@ -1,0 +1,74 @@
+{% load static %}
+
+<html>
+  <head>
+    <title>Remote Reference App</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    <!-- =========================
+         STATIC STYLESHEETS
+    ============================== -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.themes.css' %}">
+
+    <base href="/">
+
+
+    <!-- =========================
+         STATIC JAVASCRIPT
+    ============================== -->
+    <script src="{{ ANGULAR_URL }}node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="{{ ANGULAR_URL }}node_modules/zone.js/dist/zone.js"></script>
+    <script src="{{ ANGULAR_URL }}node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="{{ ANGULAR_URL }}node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="{{ ANGULAR_URL }}systemjs.config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.debug.js"></script>
+
+    <script>
+      window.ANGULAR_URL = "{{ ANGULAR_URL }}";
+      System.import('/ng/app/main').catch(function(err){
+          console.error(err);
+      });
+    </script>
+  </head>
+
+  <body data-spy="scroll" data-offset="50" data-target=".navbar-collapse">
+
+    <!-- =========================
+        INCLUDE MESSAGES
+    ============================== -->
+    {% include 'partials/messages.html' %}
+
+    <my-app>
+        <div class="preloader">
+    	    <div class="spinner"></div>
+        </div>
+    </my-app>
+
+
+    <!-- =========================
+         SCRIPTS
+    ============================== -->
+    <script src=" {% static 'js/jquery.js' %}"></script>
+    <script src=" {% static 'js/bootstrap.min.js' %}"></script>
+    <script src=" {% static 'js/jquery.parallax.js' %}"></script>
+    <script src=" {% static 'js/carousel.min.js' %}"></script>
+    <script src=" {% static 'js/smoothscroll.js' %}"></script>
+    <script src=" {% static 'js/wow.min.js' %}"></script>
+    <script src=" {% static 'js/custom.js' %}"></script>
+
+  </body>
+</html>

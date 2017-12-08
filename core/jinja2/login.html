@@ -1,0 +1,38 @@
+
+<!-- =========================
+    LOGIN VIEW
+============================== -->
+<section id="login" class="parallax-section" name="login_form">
+	<div class="container">
+
+		<div class="row">
+		    <div class="highlight wow fadeInLeft col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1s">
+				<ul class="home-icon">
+				    <li><a routerLink="/register" class="fa fa-user-plus fa-2x fadeInUp" data-wow-delay="1s"></a></li>
+			    </ul>
+				<span class="external-link"><h3>Create Account </h3><a class="link" routerLink="/register" routerLinkActive="active"><sup class="fa fa-external-link"></sup></a></span>
+				<p> This app allows remote users to look up debt status. Create your account now and be able to check the debt status of your creditors.</p>
+				<p> Already have an account? <a class="link"  routerLink="/login" routerLinkActive="active">Login <sup class="fa fa-external-link"></sup></a>.</p>
+		    </div>
+
+		    <div class="highlight wow fadeInRight col-md-offset-1 col-md-6 col-sm-8" data-wow-delay="1.5s">
+				<ul class="home-icon">
+				    <li><a routerLink="/login" class="fa fa-sign-in fa-2x fadeInUp" data-wow-delay="1s"></a></li>
+			    </ul>
+    			<br>
+    			<form action="#" method="post">
+    			    {{ csrf_input }}
+                    <div *ngIf="login_error" class="form-errors"> {{ non_field_errors }} </div>
+					<input name="username" [(ngModel)]="form.username" type="text" class="form-control" id="username" placeholder="Username">
+					<div *ngIf="login_error" class="form-errors"> {{ pass_error }} </div>
+					<input name="password" [(ngModel)]="form.password" type="password" class="form-control" id="password" placeholder="**********">
+    				<div class="col-md-offset-6 col-md-6 col-sm-offset-1 col-sm-10">
+    					<button class="col-sm-12" (click)="login(form);"> LOGIN <i [ngClass]="{'fa-spinner fa-spin': submitting, 'fa-long-arrow-right': !submitting}" class="fa" ></i></button>
+    				</div>
+    			</form>
+		    </div>
+
+		</div>
+	</div>
+</section>
+

@@ -1,0 +1,53 @@
+
+
+<!-- =========================
+    DOWNLOADS VIEW
+============================== -->
+<section class="wrapper home" id="home-wrapper">
+	<div class="container">
+
+		<div class="row">
+		     <div class="highlight wow fadeInRight col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1s">
+				<ul class="home-icon">
+				    <li><a routerLink="/downloads" class="fa fa-download fa-2x fadeInUp" data-wow-delay="1s"></a></li>
+			    </ul>
+				<span class="external-link"><h3>DownLoad Debtors</h3><a class="link" routerLink="/customers" routerLinkActive="active"><sup class="fa fa-external-link"></sup></a></span>
+				<p>The app provides a tabular view, search, and download of all data showing the current debt status of the various customers.  </p>
+				<p> Looking for a specific customer? <a class="link" routerLink="/customers" routerLinkActive="active">Lets go find them <sup class="fa fa-external-link"></sup></a>.</p>
+			</div>
+
+            <div id="editor"></div>
+			<div  class="highlight debtor-table wow fadeInRight col-md-offset-1 col-md-7 col-sm-10" data-wow-delay="1s" >
+				<div class="table-tab  col-md-12  col-sm-10">
+				    <span class="float-left"> Customer Debtor Information </span> <a class="float-right" (click)="download();">Download</a>
+				</div>
+			    <div class=" col-md-12  col-sm-10" id="download">
+			        <table class="table table-responsive table-stripped table-hover">
+			            <thead>
+			                <tr>
+    			                <td  class="results-head">Customer Name</td>
+    			                <td  class="results-head">Debtor Name</td>
+    			                <td  class="results-head">Debt Status</td>
+    			                <td  class="results-head">Debt Amount</td>
+			                </tr>
+			            </thead>
+        			    <span *ngIf="submitting" class="form-errors">
+        				    <span ><i class="fa fa-spinner fa-spin fa-2x" ></i> </span>
+        			    </span>
+			            <tbody *ngIf="!submitting">
+    		                <tr *ngFor="let debtor of debtors">
+    		                    <td class=""> {{ debtor.customer}} </td>
+    		                    <td class=""> {{ debtor.debtor}} </td>
+    		                    <td class=""> {{ debtor.debt_status}} </td>
+    		                    <td class=""> {{ debtor.amount}} </td>
+    		                </tr>
+    				        <tr *ngIf="no_data" class="form-errors"> {{ error_object.due_listing }} </tr>
+			            </tbody>
+			        </table>
+			    </div>
+			</div>
+
+
+		</div>
+	</div>
+</section>

@@ -1,0 +1,93 @@
+
+
+<!-- =========================
+    CUSTOMERS VIEW
+============================== -->
+<section class="wrapper home" id="search">
+	<div class="container">
+
+		<div class="row">
+		    <div class="highlight wow fadeInLeft col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1s">
+				<ul class="home-icon">
+				    <li><a routerLink="/customers" class="fa fa-search fa-2x fadeInUp" data-wow-delay="1s"></a></li>
+			    </ul>
+				<span class="external-link"><h3>Look Up Customers</h3><a class="link" routerLink="/customers" routerLinkActive="active"><sup class="fa fa-external-link"></sup></a></span>
+				<p>You can search specific customer information. Look Up Customer Debt Information by National ID or Mobile Number. </p>
+				<p> Have enough permission? <a class="link" routerLink="/downloads" routerLinkActive="active">Download customer data <sup class="fa fa-external-link"></sup></a>.</p>
+			</div>
+
+		    <div class="highlight wow fadeInUp col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1.5s" >
+				<ul class="home-icon">
+				    <li><a routerLink="/customers" class="fa fa-search fa-2x fadeInUp" data-wow-delay="1s"></a></li>
+			    </ul>
+
+    			<form action="#" method="post">
+    			    {{ csrf_input }}
+                    <div *ngIf="search_error" class="form-errors"> There are errors </div>
+					<label for="form.username" class="float-left">Customer Username:</label>
+					<input name="username" [(ngModel)]="form.username" type="text" class="form-control" id="username" placeholder="Username">
+					<div class="search-radio">
+                      <label class="radio inline float-left"  (click)="toogleSearch(form);">
+                          <input type="radio" name="search_key" [(ngModel)]="form.search_key"  value="phone"checked>
+                          <span> Phone Number </span>
+                      </label>
+                      <label class="radio inline float-right"  (click)="toogleSearch(form);">
+                          <input type="radio" name="search_key" [(ngModel)]="form.search_key" value="national_id">
+                          <span> National ID </span>
+                       </label>
+                    </div>
+					<input *ngIf="search_ID" name="ID" [(ngModel)]="form.ID" type="number" class="form-control" id="ID" placeholder="Customer National ID">
+					<input *ngIf="!search_ID" name="phone" [(ngModel)]="form.phone" type="number" class="form-control" id="ID" placeholder="Customer Phone ">
+    				<div class="col-md-offset-3 col-md-9 col-sm-offset-1 col-sm-10 float-right">
+    					<button class="col-sm-12" (click)="search(form);"> SEARCH <i [ngClass]="{'fa-spinner fa-spin': submitting, 'fa-long-arrow-right': !submitting}" class="fa" ></i></button>
+    				</div>
+    			</form>
+			</div>
+
+		    <div class="highlight wow fadeInRight col-md-offset-1 col-md-3 col-sm-8" data-wow-delay="1s">
+				<div class="search-results-tab  col-md-12  col-sm-10">
+				    <span > Customer Debtor Information </span>
+				</div>
+				<div *ngIf="!search_results" class="search-results-box  col-md-12  col-sm-12">
+				    <span *ngIf="!submitting">Lets see the debt status of your customer </span>
+				    <span *ngIf="submitting"><i class="fa fa-spinner fa-spin fa-2x" ></i> </span>
+				</div>
+
+				<div *ngIf="search_results" class="search-results  col-md-12  col-sm-12">
+				    <span *ngIf="search_error" class="form-errors">
+    				    <span *ngIf="!submitting"> {{ error_object.user }} {{ error_object.due_listing }}  </span>
+    				    <span *ngIf="submitting"><i class="fa fa-spinner fa-spin fa-2x" ></i> </span>
+				    </span>
+				    <span *ngIf="!search_error">
+				        <table>
+				            <thead>
+				                <th colspan="2" class="results-head">Customer found:</th>
+				            </thead>
+				            <tbody>
+				                <tr>
+				                    <td>Customer name: </td>
+				                    <td> {{ debtor.customer}} </td>
+				                </tr>
+				                <tr>
+				                    <td>Debtor name: </td>
+				                    <td> {{ debtor.debtor}} </td>
+				                </tr>
+				                <tr>
+				                    <td> Debt status: </td>
+				                    <td> {{ debtor.debt_status}} </td>
+				                </tr>
+				                <tr>
+				                    <td>Debt Amount: </td>
+				                    <td class="results-data"> {{ debtor.amount}} </td>
+				                </tr>
+				            </tbody>
+				        </table>
+				    </span>
+				</div>
+
+				<p> Have enough permission? <a class="link" routerLink="/downloads" routerLinkActive="active">Download customer data <sup class="fa fa-external-link"></sup></a>.</p>
+			</div>
+
+		</div>
+	</div>
+</section>
